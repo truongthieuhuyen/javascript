@@ -1,0 +1,110 @@
+/* Variables */
+$bgc: #ddd;
+$border: 1px solid #bbb;
+$boxShadow: 0 1px 4px 0 rgb(129, 129, 129);
+$numbersMargin: 10px 3px 10px 0;
+
+@mixin transition($ms) {
+    transition: border-color $ms ease-in-out, background-color $ms, box-shadow $ms ;
+}
+body {
+    width: 500px;
+    margin: 4% auto;
+    font-family: 'Source Sans Pro', sans-serif;
+    letter-spacing: 5px;
+    font-size: 1.8rem;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+.calculator{
+    padding: 20px;
+    /* -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2); */
+    box-shadow: $boxShadow;
+    border-radius: 5px;
+}  
+.input{
+    border: $border;
+    border-radius: 5px;
+    height: 65px;
+    padding-right: 10px;
+    padding-top: 10px;
+    text-align: right;
+    font-size: 2.5em;
+    overflow-x: auto;
+    overflow-y: hidden;
+    @include transition(.5s);
+    &:hover{
+        border: $border;
+        box-shadow: $boxShadow;
+    }
+}
+
+
+.operators div{
+    display: inline-block;
+    border: $border ;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    padding: 10px;
+    margin: 20px 3px 10px 0;
+    cursor: pointer;
+    background-color: $bgc;
+    @include transition(.2s);
+    &:hover{
+        background-color: $bgc;
+        box-shadow:inset $boxShadow;
+        border: $border;
+    }
+    &:active{
+        font-weight: bold;
+    }
+}
+
+.left-panel{
+    display: inline-block;
+}
+.numbers div{
+    display: inline-block;
+    border: $border;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    padding: 10px;
+    margin: $numbersMargin ;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    @include transition(0.2s);
+    &:hover{
+        background-color: $bgc;
+        box-shadow:inset $boxShadow;
+        border: $border;
+    }
+    &:active{
+        font-weight: bold;
+    }
+}
+
+
+.right-panel{
+    display: inline-block;
+    border: $border;
+    border-radius: 5px;
+    width: 17%;
+    text-align: center;
+    padding: 127px 10px;
+    margin: 10px 0;
+    vertical-align: top;
+    cursor: pointer;
+    color: #FFF;
+    background-color: #4d90fe;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: #307CF9;
+        box-shadow:inset $boxShadow;
+    }
+    &:active{
+        font-weight: bold;
+    }
+}

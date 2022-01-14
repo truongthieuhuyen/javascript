@@ -1,46 +1,26 @@
-window.onload = function () {
-    var seconds = 00;
-    var tens = 00;
-    var appendTens = document.getElementById("tens");
-    var appendSeconds = document.getElementById("seconds");
-    var btnStart = document.getElementById("btn-start");
-    var btnStop = document.getElementById("btn-stop");
-    var btnReset = document.getElementById("btn-reset");
-    var Interval ;
+function showTime() {
+    var date = new Date();
+    var h = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    var session = "AM";
 
-    btnStart.onclick = function () {
-        clearInterval(Interval);
-        Interval = setInterval(startTimer,10);
+    if (h == 0) {
+        h = 12;
     }
-    btnStop.onclick = function () {
-        clearInterval(Interval);
-    }
-    btnReset.onclick = function () {
-        clearInterval(Interval);
-        tens = "00";
-        seconds = "00";
-        appendTens.innerHTML = tens;
-        appendSeconds.innerHTML = seconds;
+    if (h > 12) {
+        h = h - 12;
+        session = "PM";
     }
 
-    function startTimer() {
-        tens++;
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
 
-        if (tens <= 9) {
-            appendTens.innerHTML = "0" +tens;
-        }
-        if (tens > 9) {
-            appendTens.innerHTML = tens;
-        }
-        if (tens > 99) {
-            console.log('seconds');
-            seconds++;
-            appendSeconds.innerHTML = "0"+seconds;
-            tens = 0;
-            appendTens.innerHTML = "0" +0;
-        }
-        if (seconds > 9) {
-            appendSeconds.innerHTML = seconds;
-        }
-    }
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("myClock").innerText = time;
+    document.getElementById("myClock").textContent = time;
+
+    setTimeout(showTime,1000);
 }
+showTime();
